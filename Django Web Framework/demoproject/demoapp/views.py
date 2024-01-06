@@ -12,7 +12,7 @@ def menuitems(request, dish):
 
     description = items[dish]
 
-    return HttpResponse(f'<h1>{dish}</h1>' + description)
+    return HttpResponse(f'<html><h1>{dish}</h1></html>' + description)
 
 # def home(request):
 #     path = request.path
