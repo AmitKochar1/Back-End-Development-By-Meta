@@ -2,17 +2,28 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
+from demoapp.forms import LogForm
 
-def menuitems(request, dish):
-    items = {
-        "pasta": "Pasta is a type of noodle made from combination of wheat and grain",
-        "falafel": "Falafel are deep fried patties",
-        "cheesecake": "Cheesecake is a type of dessert",
-    }
+def form_view(request):
+    form = LogForm()
+    if request.method == "POST":
+        form = LogForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, 'home.html', context) 
 
-    description = items[dish]
 
-    return HttpResponse(f'<html><h1>{dish}</h1></html>' + description)
+# def menuitems(request, dish):
+#     items = {
+#         "pasta": "Pasta is a type of noodle made from combination of wheat and grain",
+#         "falafel": "Falafel are deep fried patties",
+#         "cheesecake": "Cheesecake is a type of dessert",
+#     }
+
+#     description = items[dish]
+
+#     return HttpResponse(f'<html><h1>{dish}</h1></html>' + description)
 
 # def home(request):
 #     path = request.path
