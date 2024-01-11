@@ -1,8 +1,8 @@
 from django import forms
 
-from .models import Logger
+from .models import Reservation
 
 class LogForm (forms.ModelForm):
     class Meta:
-        model = Logger
+        model = Reservation
         fields = "__all__"
