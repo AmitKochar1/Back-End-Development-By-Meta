@@ -1,17 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+def about(request):
+    about_content={"about" : 'Based in chicago, illnois.'}
+    return render(request, 'about.html', about_content) 
 
 # Create your views here.
-from demoapp.forms import LogForm
+# from demoapp.forms import LogForm
 
-def form_view(request):
-    form = LogForm()
-    if request.method == "POST":
-        form = LogForm(request.POST)
-        if form.is_valid():
-            form.save()
-    context = {'form': form}
-    return render(request, 'home.html', context) 
+# def form_view(request):
+#     form = LogForm()
+#     if request.method == "POST":
+#         form = LogForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#     context = {'form': form}
+#     return render(request, 'home.html', context) 
 
 
 # def menuitems(request, dish):
