@@ -62,6 +62,10 @@ def single_item(request, id):
     return Response(serialized_item.data)
 
 @api_view()
+def secret_message():
+    return "Some sceret message!!"
+
+@api_view()
 @permission_classes([IsAuthenticated])
 def manager_view(request):
     if request.user.groups.filter(name='manager').exists():
