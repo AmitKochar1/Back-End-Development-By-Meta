@@ -14,7 +14,7 @@ class CategorySerializer(serializers.Serializer):
         model = Category
         fields = ['slug']
         
-class ManagerSerializer(serializers.Serializer):
+class ManagerListSerializer(serializers.Serializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email']
