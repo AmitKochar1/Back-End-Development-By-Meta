@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Category, Menuitem, Cart, Order, OrderItem
+from .models import Category, MenuItem, Cart, Order, OrderItem
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta():
-        model = Menuitem
+        model = MenuItem
         fields = ['id','title', 'price', 'featured', 'category']
         depth = 1
         
@@ -14,14 +14,14 @@ class CategorySerializer(serializers.Serializer):
         model = Category
         fields = ['slug']
         
-class ManagerListSerializer(serializers.Serializer):
+class ManagerListMenuItemSerializer(serializers.Serializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email']
         
 class CartHelpSerializer(serializers.Serializer):
     class Meta:
-        model = Menuitem
+        model = MenuItem
         fields = ['id', 'title', 'user']
         
 class CartSerializer(serializers.Serializer):
@@ -56,7 +56,7 @@ class OrderSerializer(serializers.Serializer):
         
 class SingleHelperSerializer(serializers.Serializer):
     class Meta:
-        model = Menuitem
+        model = MenuItem
         fields = ['title', 'price']
         
 class SingleOrderSerializer(serializers.Serializer):

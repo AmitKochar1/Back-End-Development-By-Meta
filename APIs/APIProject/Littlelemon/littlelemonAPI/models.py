@@ -6,7 +6,7 @@ class Category(models.Model):
     slug = models.SlugField()
     title = models.CharField(max_length = 255, db_index=True)
     
-class Menuitem(models.Model):
+class MenuItem(models.Model):
     title = models.CharField(max_length = 255, db_index=True)
     price = models.DecimalField(decimal_places=2, max_digits=2, db_index=True)
     featured = models.BooleanField(db_index=True, default=True)
@@ -14,7 +14,7 @@ class Menuitem(models.Model):
     
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    menuitem = models.ForeignKey(Menuitem, on_delete=models.CASCADE)
+    menuitem = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     quantity = models.SmallIntegerField()
     uint_price = models.DecimalField(max_digits=2, decimal_places=2)
     price = models.DecimalField(max_digits=2, decimal_places=2)
@@ -31,7 +31,7 @@ class Order(models.Model):
     
 class OrderItem(models.Model):
     order = models.ForeignKey(User, on_delete=models.CASCADE)
-    menuitem = models.ForeignKey(Menuitem, on_delete=models.CASCADE)
+    menuitem = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     quantity = models.SmallIntegerField()
     uint_price = models.DecimalField(max_digits=6, decimal_places=2)
     price = models.DecimalField(max_digits=6, decimal_places=2)
