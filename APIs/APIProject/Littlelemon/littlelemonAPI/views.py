@@ -73,7 +73,7 @@ class ManagersRemoveView(generics.DestroyAPIView):
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
     serializer_class = ManagerListMenuItemSerializer
     permission_classes = [IsAuthenticated, IsManager | IsAdminUser]
-    queryset = User.objects.filter(group__name='Managers')
+    queryset = User.objects.filter(groups__name='Managers')
     
     def delete(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
@@ -84,7 +84,7 @@ class ManagersRemoveView(generics.DestroyAPIView):
 
 class DeliveryCrewListView(generics.ListCreateAPIView):
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
-    queryset = User.objects.filter(group__name='Delivery crew')
+    queryset = User.objects.filter(groups__name='Delivery crew')
     serializer_class=ManagerListMenuItemSerializer
     permission_classes = [IsAuthenticated, IsManager| IsAdminUser]
     
@@ -101,7 +101,7 @@ class DeliveryCrewRemoveView(generics.DestroyAPIView):
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
     serializer_class = ManagerListMenuItemSerializer
     permission_classes = [IsAuthenticated, IsManager | IsAdminUser]
-    queryset = User.objects.filter(group__name = 'Delivery crew')
+    queryset = User.objects.filter(groups__name = 'Delivery crew')
     
     def delete(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
