@@ -1,6 +1,7 @@
 from django.contrib import admin
+from .models import Reservations
 # Register your models here.
-# @admin.register(Reservation)
+@admin.register(Reservation)
 
 # class PersonAdmin(admin.ModelAdmin):
 #     list_display=('name', 'contact', 'time_log', 'count', 'notes')
