@@ -2,17 +2,17 @@ from django.db import models
 
 # Create your models here.
 class Booking(models.Model):
-    Name = models.CharField(max_length = 255)
-    No_of_guest = models.IntegerField(default = 5)
-    Bookingdate = models.DateField()
+    name = models.CharField(max_length = 255)
+    no_of_guest = models.IntegerField(default = 5)
+    bookingdate = models.DateField()
     
     def __self__(self):
         return self.Name
     
 class Menu(models.Model):
-    Title = models.CharField(max_length = 200)
-    Price = models.IntegerField()
-    Inventory = models.SmallIntegerField()
+    title = models.CharField(max_length = 200)
+    price = models.IntegerField()
+    inventory = models.SmallIntegerField()
     
     def __str__(self):
-        return self.Title
+        return f'{self.title} : {str(self.price)}'
